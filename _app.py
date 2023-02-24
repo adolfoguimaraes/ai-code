@@ -3,14 +3,15 @@ from flask_cors import CORS
 
 from flask import jsonify, request
 
-from minimax import minmax
+from minimax import minmax_tictactoe
+from minimax.tictactoe_tree import TicTacToeTree
 
 
 app = Flask(__name__)
 CORS(app)
 
-minmax_ = minmax.MinMax()
-minmax_tree = minmax_.tree
+tree_ = TicTacToeTree().tree
+minmax_ = minmax_tictactoe.TicTacToeProblem(tree_)
 
 
 @app.route('/')
